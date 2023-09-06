@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on JerryYan Blog</title>
+    <title>Tags on JerryYan&#39;s Blog</title>
     <link>https://jerryyan24.github.io/tags/</link>
-    <description>Recent content in Tags on JerryYan Blog</description>
+    <description>Recent content in Tags on JerryYan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Jerry Yan</copyright>
@@ -18,11 +18,29 @@
     </item>
     
     <item>
+      <title>Fundamental AI</title>
+      <link>https://jerryyan24.github.io/tags/fundamental-ai/</link>
+      <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
+      
+      <guid>https://jerryyan24.github.io/tags/fundamental-ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Introduce</title>
       <link>https://jerryyan24.github.io/tags/introduce/</link>
       <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
       
       <guid>https://jerryyan24.github.io/tags/introduce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Math for AI</title>
+      <link>https://jerryyan24.github.io/tags/math-for-ai/</link>
+      <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
+      
+      <guid>https://jerryyan24.github.io/tags/math-for-ai/</guid>
       <description></description>
     </item>
     

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>JerryYan Blog</title>
+    <title>JerryYan&#39;s Blog</title>
     <link>https://jerryyan24.github.io/</link>
-    <description>Recent content on JerryYan Blog</description>
+    <description>Recent content on JerryYan&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Jerry Yan</copyright>
     <lastBuildDate>Sat, 25 Mar 2023 15:04:53 +0800</lastBuildDate><atom:link href="https://jerryyan24.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gradient accumulation principle</title>
+      <link>https://jerryyan24.github.io/posts/gradient-accumulation-principle/</link>
+      <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
+      
+      <guid>https://jerryyan24.github.io/posts/gradient-accumulation-principle/</guid>
+      <description>Gradient accumulation principle During deep learning training, the batch size of the data is limited by the GPU memory, and the batch size affects the final accuracy of the model and the performance of the training process. As the model gets larger and larger with constant GPU memory, this means that the batch size of the data can only be reduced, and this is where Gradient Accumulation can be a simple solution to the problem.</description>
+    </item>
+    
     <item>
       <title>iTheme for Hugo</title>
       <link>https://jerryyan24.github.io/posts/hello-world/</link>
@@ -118,7 +127,7 @@ Code Blocks ```javascript function say() { const greeting = &amp;#34;I&amp;#39;l
     </item>
     
     <item>
-      <title>关于我们</title>
+      <title>About Me</title>
       <link>https://jerryyan24.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

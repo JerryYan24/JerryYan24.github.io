@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="js no-touch  progressive-image  no-reduced-motion progressive" lang="en">
+  <head>
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/img/favicon.ico">
+
+    <meta name="keyword" content=""><meta property="og:title" content="Gradient accumulation principle" />
+<meta property="og:description" content="an introduce for iTheme" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerryyan24.github.io/posts/gradient-accumulation-principle/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-25T15:04:53+08:00" />
+<meta property="article:modified_time" content="2023-03-25T15:04:53+08:00" />
+<title>Gradient accumulation principle</title>
+
+    <link rel="canonical" href="/posts/gradient-accumulation-principle/">
+
+    <link rel="stylesheet" href="/css/global.css">
+
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <link rel="stylesheet" href="/css/search.css" />
+
+    
+    
+
+    
+    
+
+</head>
+  </head>
+  <body class=" page-article   ">
+    <header>
+      <nav class="nav">
+  <div class="nav-wrapper">
+    <div class="nav-content-wrapper">
+      <div class="nav-content">
+        <a href="/ " class="nav-title">JerryYan&#39;s Blog</a>
+        <div class="nav-menu">
+          <div class="nav-item-wrapper">
+            <a href="/posts " class="nav-item-content">Articles</a>
+          </div><div class="nav-item-wrapper">
+            <a href="/about" class="nav-item-content">About</a>
+          </div><div class="nav-item-wrapper">
+            <a href="/index.xml" class="nav-item-content" target="_blank">RSS</a>
+          </div></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function toggleSearchModal(){
+    const template = `
+    <div class="modal-body">
+      <div id="autocomplete" onclick="event.stopPropagation();"></div>
+    </div>
+    `
+    const modal = document.querySelector("#modal-wrapper")
+    if(!modal){
+      const div = document.createElement("div")
+      document.body.setAttribute("style","overflow: hidden;")
+      div.setAttribute("id", "modal-wrapper")
+      div.setAttribute("onclick", "toggleSearchModal()")
+      div.innerHTML = template
+      const script = document.createElement("script");script.setAttribute("src", "https://jerryyan24.github.io/js/algolia.js")
+      div.appendChild(script)
+      document.body.append(div)
+    } else {
+      document.body.removeAttribute("style")
+      document.body.removeChild(modal)
+    }
+  }
+</script>
+    </header>
+    
+  
+  
+  <main id="main" class="main">
+      <section>
+        <article class="article">
+          
+          <div class=" article-header ">
+            <div class="category component">
+              <div class="component-content">
+                <div class="category-eyebrow">
+                  <span class="category-eyebrow__category category_original">
+                    
+                      
+                        Fundamental AI
+                      
+                    
+                  </span>
+                  <span class="category-eyebrow__date">March 25, 2023</span>
+                </div>
+              </div>
+            </div>
+            <div class="pagetitle component">
+              <div class="component-content">
+                <h1 class="hero-headline">Gradient accumulation principle</h1>
+              </div>
+            </div>
+            <div class="component  article-subhead ">
+              <div class="component-content">an introduce for iTheme</div>
+            </div>
+
+            <div class="tagssheet component">
+              <div class="component-content">
+                
+                  
+                  <a href="/tags/fundamental-ai" class="tag">
+                    Fundamental AI
+                  </a>
+                
+                  
+                  <a href="/tags/math-for-ai" class="tag">
+                    Math for AI
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="pagebody">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+<div class="component-content pagebody component">
+  <h1 id="gradient-accumulation-principle" class="pagebody-header">
+    Gradient accumulation principle
+  </h1>
+</div><p class="component-content component">During deep learning training, the batch size of the data is limited by the GPU memory, and the batch size affects the final accuracy of the model and the performance of the training process. As the model gets larger and larger with constant GPU memory, this means that the batch size of the data can only be reduced, and this is where Gradient Accumulation can be a simple solution to the problem.</p>
+
+<div class="component-content pagebody component">
+  <h2 id="role-of-batch-size" class="pagebody-header">
+    Role of Batch size
+  </h2>
+</div><p class="component-content component">The Batch size of the training data has a key impact on the convergence of the training process and ultimately the accuracy of the trained model. Typically, there is an optimal value or range of values for the Batch size of each neural network and dataset.</p>
+<blockquote>
+<p class="component-content component">Different neural networks and different datasets may have different optimal Batch size.</p>
+</blockquote>
+<p class="component-content component">There are two main issues to consider when choosing a Batch size:</p>
+<p class="component-content component"><strong>Generalization</strong>: a large Batch size may fall into a local minimum. Falling into a local minimum means that the neural network will perform well on samples outside the training set, a process called generalization. Therefore, generalization generally indicates over-fitting.</p>
+<p class="component-content component"><strong>Convergence speed</strong>: A small Batch size may lead to slow convergence of the algorithm learning. The update of the network model at each Batch will determine the starting point for the next Batch update. Each Batch trains the dataset and randomly draws training samples, so the resulting gradient is based on a partial estimate of the data noise. The fewer samples used in a single Batch, the less accurate the gradient estimation will be. In other words, a smaller Batch size may make the learning process more volatile, essentially lengthening the time it takes for the algorithm to converge.</p>
+
+<div class="component-content pagebody component">
+  <h2 id="impact-of-batch-size-on-memory" class="pagebody-header">
+    Impact of Batch size on memory
+  </h2>
+</div><p class="component-content component">While traditional computers have access to a large amount of RAM on top of the CPU, they can also make use of SSDs for secondary caching or virtual caching mechanisms. But the memory on an AI accelerator chip such as a GPU is much less. This is where the size of the training data Batch size has a significant impact on the GPU&rsquo;s memory.</p>
+<p class="component-content component">To understand this further, let us first examine the contents of the memory on the AI chip during training:</p>
+<div class="component-content component"><ul>
+<li>Model parameters: the weight parameters and biases that the network model needs to use.</li>
+<li>Optimizer variables: variables needed by the optimizer algorithm, e.g. momentum momentum.</li>
+<li>Intermediate computation variables: intermediate values generated by the network model computation, which are temporarily stored in the memory of the AI accelerator chip, e.g. the output of each activation layer.</li>
+<li>Workspace: Local variables that are used by the kernel implementation of the AI accelerator chip and are generated in temporary memory, e.g. the local variables generated by the calculation of B/C in the operator D=A+B/C.</li>
+</ul></div>
+<p class="component-content component">Therefore, a larger Batch size means that more samples are needed for the training of the neural network, resulting in a proliferation of variables that need to be stored in the AI chip&rsquo;s memory. In many cases, there is not enough AI accelerator chip memory, and setting the Batch size too large results in an OOM error (Out Off Memory).</p>
+
+<div class="component-content pagebody component">
+  <h2 id="ways-to-use-large-batch-sizes" class="pagebody-header">
+    Ways to use large Batch sizes
+  </h2>
+</div><p class="component-content component">One way to address the memory limitations of AI accelerator chips and run large Batch sizes is to split the Batch of a data Sample into smaller Batches called Mini-Batches. these small Mini-Batches can run independently and average or sum the gradients while the network model is being trained. There are two main ways to implement this.</p>
+<div class="component-content component"><ol>
+<li>
+<p class="component-content component">Data parallelism: Use multiple AI accelerator chips to train all Mini-Batches in parallel, with each copy of data on a single AI accelerator chip. The gradients of all Mini-Batches are accumulated and the results are used to sum and update the network parameters at the end of each Epoch.</p>
+</li>
+<li>
+<p class="component-content component">Gradient accumulation: Mini-Batch is executed sequentially while the gradients are accumulated, and the accumulated results are averaged to update the model variables after the last Mini-Batch is calculated.</p>
+</li>
+</ol></div>
+<p class="component-content component">Although both techniques are quite similar and solve the problem of memory not being able to execute larger Batch sizes, gradient accumulation can be done using a single AI accelerator chip, whereas data parallelism requires multiple AI accelerator chips, so students who only have a 12G used card on hand should hurry up and put gradient accumulation to use.</p>
+
+<div class="component-content pagebody component">
+  <h2 id="gradient-accumulation-principle-1" class="pagebody-header">
+    Gradient accumulation principle
+  </h2>
+</div><p class="component-content component">Gradient accumulation is a way of training a neural network in which samples of the data Sample are split into several smaller Batches by Batch and then computed in sequence.</p>
+<p class="component-content component">Before discussing gradient accumulation further, let&rsquo;s look at the computational process of a neural network.</p>
+<p class="component-content component">The deep learning model consists of a number of interconnected neural network units, and the sample data is propagated forward through all the neural network layers. After passing through all the layers, the network model outputs the predicted values of the samples, passes through the loss function and then calculates the loss value (error) for each sample. The neural network is back-propagated to calculate the gradient of the loss values relative to the model parameters. Finally this gradient information is used to make updates to the parameters in the network model.</p>
+<p class="component-content component">The mathematical formula used by the optimizer to update the parameters of the model weights of the network model. Take a simple stochastic gradient descent (SGD) algorithm as an example. Assume that the Loss Function function is formulated as
+$$
+\operatorname{Loss}(\theta)=\frac{1}{2}\left(h\left(x^k\right)-y^k\right)^2
+$$
+In building the model, the optimizer is used to calculate the algorithm that minimizes the losses. Here the SGD algorithm uses the Loss function to update the weighting parameters as follows
+$$
+\theta i=\theta_{i-1}-l r * \operatorname{grad}_i
+$$
+Theta is the trainable parameters (weights or biases) in the network model, lr is the learning rate and grad is the loss relative to the parameters of the network model.</p>
+<p class="component-content component">Gradient accumulation is the calculation of the neural network model, but does not update the parameters of the network model in time, while accumulating the gradient information obtained during the calculation, and finally using the accumulated gradients to update the parameters uniformly.
+$$
+\text { accumulated }=\sum_{i=0}^N \text { grad }_i
+$$
+In not updating the model variables, the original data Batch is actually split into several smaller Mini-Batches, and the samples used in each step are actually smaller data sets.</p>
+<p class="component-content component">By not updating the variables within N-steps, so that all Mini-Batches use the same model variables to calculate the gradient, to ensure that the same gradient and weight information is obtained from the calculation, the algorithmic equivalent is to use the same size of the original unsliced Batch. That is:
+$$
+\theta i=\theta_{i-1}-l r * \sum_{i=0}^N g r a d_i
+$$
+Ultimately accumulating the gradients in the above step will produce a sum of gradients of the same size as using the global Batch size.</p>
+<p class="component-content component">In practical engineering, of course, there are two points to note about the tuning and algorithms:</p>
+<p class="component-content component"><strong>Learning rate</strong>: Under certain conditions, the larger the Batch size, the better the training effect, gradient accumulation simulates the effect of increasing the Batch size.</p>
+<p class="component-content component"><strong>Batch Norm</strong>: Batch size simulation when accumulation steps is 4. Compared with the real Batch size, the distribution of the data is not exactly the same, and the mean and variance calculated by BN with 4 times the Batch size are not quite the same as the actual data mean and variance. Some implementations use Group Norm instead of Batch Norm.</p>
+
+          </div><div class="component">
+            <div class="component-content">
+              <div class="article-copyright">
+                <p class="content">
+                  Copyright: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>
+                </p>
+                <p class="content">Author:  Jerry Yan </p>
+                <p class="content">Posted on:  March 25, 2023</p>
+              </div>
+            </div>
+          </div></article>
+      </section>
+  </main>
+
+  <script>
+    var script = document.createElement("script");script.src = "https://jerryyan24.github.io/js/initPost.js";
+    document.head.appendChild(script);
+  </script>
+
+    
+    <div class="footer-main ">
+  <div class="content-body footer-wraper">
+    <div class="footer-box">
+      <div class="foot-nav">
+        <div class="foot-nav-items">
+          <div class="item">
+            <div class="logo"></div>
+            <div class="email">Email: <a href="mailto:jerryyan24@outlook.com">jerryyan24@outlook.com</a></div>
+          </div>
+
+          <div class="item community">
+            <div class="item-title">Social Media</div>
+            
+              <a href="https://github.com/jerryyan24" target="_blank">Github</a>
+            
+          </div>
+
+          <div class="item resources">
+            <div class="item-title">Related</div>
+            
+              <a href="https://yufengbiji.com/" target="_blank">驭风笔记</a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="item copyright">
+          &copy; 2023
+          Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> & <a href="https://github.com/floyd-li/hugo-theme-itheme" target="_blank">iTheme</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"
+        async
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[\[','\]\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<style>
+  code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+  }
+</style>
+
+  </body>
+    
+    
+
+    
+    
+</html>
