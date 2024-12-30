@@ -5,12 +5,6 @@
     <loc>https://jerryyan24.github.io/tags/demo/</loc>
     <lastmod>2023-03-25T15:04:53+08:00</lastmod>
   </url><url>
-    <loc>https://jerryyan24.github.io/tags/fundamental-ai/</loc>
-    <lastmod>2023-03-25T15:04:53+08:00</lastmod>
-  </url><url>
-    <loc>https://jerryyan24.github.io/posts/gradient-accumulation-principle/</loc>
-    <lastmod>2023-03-25T15:04:53+08:00</lastmod>
-  </url><url>
     <loc>https://jerryyan24.github.io/tags/introduce/</loc>
     <lastmod>2023-03-25T15:04:53+08:00</lastmod>
   </url><url>
@@ -18,9 +12,6 @@
     <lastmod>2023-03-25T15:04:53+08:00</lastmod>
   </url><url>
     <loc>https://jerryyan24.github.io/</loc>
-    <lastmod>2023-03-25T15:04:53+08:00</lastmod>
-  </url><url>
-    <loc>https://jerryyan24.github.io/tags/math-for-ai/</loc>
     <lastmod>2023-03-25T15:04:53+08:00</lastmod>
   </url><url>
     <loc>https://jerryyan24.github.io/posts/</loc>
@@ -126,6 +117,8 @@
     <lastmod>2022-03-25T15:00:53+08:00</lastmod>
   </url><url>
     <loc>https://jerryyan24.github.io/about/</loc>
+  </url><url>
+    <loc>https://jerryyan24.github.io/blog/</loc>
   </url><url>
     <loc>https://jerryyan24.github.io/categories/</loc>
   </url>

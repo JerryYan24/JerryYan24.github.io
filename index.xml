@@ -9,15 +9,6 @@
     <copyright>Jerry Yan</copyright>
     <lastBuildDate>Sat, 25 Mar 2023 15:04:53 +0800</lastBuildDate><atom:link href="https://jerryyan24.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Gradient accumulation principle</title>
-      <link>https://jerryyan24.github.io/posts/gradient-accumulation-principle/</link>
-      <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
-      
-      <guid>https://jerryyan24.github.io/posts/gradient-accumulation-principle/</guid>
-      <description>Gradient accumulation principle During deep learning training, the batch size of the data is limited by the GPU memory, and the batch size affects the final accuracy of the model and the performance of the training process. As the model gets larger and larger with constant GPU memory, this means that the batch size of the data can only be reduced, and this is where Gradient Accumulation can be a simple solution to the problem.</description>
-    </item>
-    
-    <item>
       <title>iTheme for Hugo</title>
       <link>https://jerryyan24.github.io/posts/hello-world/</link>
       <pubDate>Sat, 25 Mar 2023 15:04:53 +0800</pubDate>
@@ -132,7 +123,7 @@ Code Blocks ```javascript function say() { const greeting = &amp;#34;I&amp;#39;l
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jerryyan24.github.io/about/</guid>
-      <description>苹果公司（英语：Apple Inc.），原称苹果电脑公司（英语：Apple Computer, Inc.），是源自美国的跨国科技公司，总部位于美国加州的库比蒂诺，</description>
+      <description></description>
     </item>
     
   </channel>
